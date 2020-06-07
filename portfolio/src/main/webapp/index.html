@@ -1,18 +1,237 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="UTF-8">
-    <title>My Portfolio</title>
-    <link rel="stylesheet" href="style.css">
-    <script src="script.js"></script>
-  </head>
-  <body>
-    <div id="content">
-      <h1>My Portfolio</h1>
-      <p>This is my portfolio.</p>
-      <p>Click here to get a random message:</p>
-      <button onclick="addRandomGreeting()">Hello</button>
-      <div id="greeting-container"></div>
+
+<head>
+  <meta charset="UTF-8">
+  <title>My Portfolio</title>
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js"></script>
+</head>
+
+<body>
+  <div id="content">
+    <div class="banner container">
+      <div class="row">
+
+        <div class="col banner-left josefont" style="position: absolute">
+          <h5 class="orange">Hello, I'm</h5>
+          <h2>Kevin Chan</h2><br>
+          <h6 class="orange">Welcome to my portfolio!</h6>
+        </div>
+
+        <div class="col banner-left josefont" style="position: absolute">
+          <h5 class="orange">你好，我是</h5>
+          <h2>Kevin Chan</h2><br>
+          <h6 class="orange">欢迎来到我的投资组合!</h6>
+        </div>
+
+        <div class="col banner-left josefont" style="position: absolute">
+          <h5 class="orange">Hello, saya</h5>
+          <h2>Kevin Chan</h2><br>
+          <h6 class="orange">Selamat datang ke portfolio saya!</h6>
+        </div>
+
+        <div class="col banner-left josefont" style="position: absolute">
+          <h5 class="orange">ஹலோ,நான்</h5>
+          <h2>Kevin Chan</h2><br>
+          <h6 class="orange">எனது போர்ட்ஃபோலியோவுக்கு வருக!</h6>
+        </div>
+
+        <div class="col banner-left josefont" style="position: absolute">
+          <h5 class="orange">안녕하세요</h5>
+          <h2>Kevin Chan</h2><br>
+          <h6 class="orange">내 포트폴리오에 오신 것을 환영합니다!</h6>
+        </div>
+
+        <div class="col banner-left josefont" style="position: absolute">
+          <h5 class="orange">こんにちは私は</h5>
+          <h2>Kevin Chan</h2><br>
+          <h6 class="orange">私のポートフォリオへようこそ!</h6>
+        </div>
+
+        <div class="col banner-left josefont" style="position: absolute">
+          <h5 class="orange">สวีสดีฉันเอง</h5>
+          <h2>Kevin Chan</h2><br>
+          <h6 class="orange">ยินดีต้อนรับสู่ผลงานของฉัน!</h6>
+        </div>
+
+        <div class="col banner-left josefont" style="position: absolute">
+          <h5 class="orange">Xin chao, tôi la</h5>
+          <h2>Kevin Chan</h2><br>
+          <h6 class="orange">Chào mừng đến với danh mục đầu tư của tôi!</h6>
+        </div>
+
+        <div class="col banner-left josefont" style="position: absolute">
+          <h5 class="orange">Bonjour, je suis</h5>
+          <h2>Kevin Chan</h2><br>
+          <h6 class="orange">Bienvenue dans mon portfolio!</h6>
+        </div>
+
+        <div class="col banner-left josefont" style="position: absolute">
+          <h5 class="orange">Hallo, ich bin</h5>
+          <h2>Kevin Chan</h2><br>
+          <h6 class="orange">Willkommen in meinem Portfolio!</h6>
+        </div>
+
+        <div class="col banner-left josefont" style="position: absolute">
+          <h5 class="orange">Ciao, io sono</h5>
+          <h2>Kevin Chan</h2><br>
+          <h6 class="orange">Benvenuto nel mio portafoglio!</h6>
+        </div>
+
+        <div class="col banner-left josefont" style="position: absolute">
+          <h5 class="orange">Hej, jag är</h5>
+          <h2>Kevin Chan</h2><br>
+          <h6 class="orange">Välkommen till min portfölj!</h6>
+        </div>
+
+        <div class="col">
+          <img class="float-right" src="images/me.png" width="200px">
+        </div>
+      </div>
     </div>
-  </body>
+    <div id="menubar" class="container d-flex justify-content-around align-items-center josefont">
+      <a href="#work" class="text-light">Work</a>
+      <a href="#learn" class="text-light">Learn</a>
+      <a href="#play" class="text-light">Play</a>
+    </div>
+
+    <div id="aboutme" class="py-4">
+      <div class="container">
+        <h3 class="josefont">About me</h3>
+        <p>Hi! My name is Kevin Chan and I am a 3rd year Computer Science student at the National University of
+          Singapore!
+          Specialising in Software Engineering, I enjoy developing mobile applications and websites as each app or
+          website
+          is like a blank canvas for me to exercise my creativity and problem-solving skills when developing them.
+          <br><br>
+          During my free time, I enjoy cooking and baking, a skill which I picked up during my exchange programme in
+          London in 2019. Some of my most delicious recipes are brownies, cookies and a bowl of beef gyudon!
+          <br><br>
+          I also enjoy playing the guitar and the piano, and the songs that I enjoy playing are usually classic pieces
+          on
+          the guitar like ‘Wonderful Tonight’ by Eric Clapton and classical pieces on the piano like the ‘Pathetique
+          Sonata’ by Beethoven.
+        </p>
+      </div>
+    </div>
+
+    <div id="work" class="container py-4">
+      <h3 class="josefont">Work</h3>
+      <div class="grid">
+        <div class="row my-2 py-2 workcard">
+          <div class="col-2"><img src="images/visa.png" class="avatar mx-auto d-block shadow-sm"></div>
+          <div class="col-10 my-auto">
+            <h5 class="josefont">Visa</h5>
+            <em>Software Engineering Intern</em>
+          </div>
+        </div>
+        <div class="row py-2 workcard">
+          <div class="col-2"><img src="images/nus.jpg" class="avatar mx-auto d-block shadow-sm"></div>
+          <div class="col-10 my-auto">
+            <h5 class="josefont">National University of Singapore</h5>
+            <em>Research Assistant</em>
+          </div>
+        </div>
+        <div class="row py-2 workcard">
+          <div class="col-2"><img src="images/singtel.jpg" class="avatar mx-auto d-block shadow-sm"></div>
+          <div class="col-10 my-auto">
+            <h5 class="josefont">Singtel</h5>
+            <em>Data Analytics Intern</em>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="learn" class="py-4">
+      <div class="container">
+        <h3 class="josefont">Learn</h3>
+        <div class="grid">
+          <div class="row text-center">
+            <div class="col learncard">
+              <img src="images/digiceipt.png"
+                class="avatar mx-auto mb-2 d-block shadow-sm">
+              <a href="https://play.google.com/store/apps/details?id=com.kevinc.digiceipt_android&hl=en"
+                class="josefont h5">Digiceipt</a>
+              <br>
+              <small>A smart receipt application to store and record receipts!</small>
+            </div>
+            <div class="col learncard">
+              <img src="images/buses.png"
+                class="avatar mx-auto mb-2 d-block shadow-sm">
+              <a href="https://nusbusesweb.firebaseapp.com/" class="josefont h5">NUS Buses PWA</a>
+              <br>
+              <small>A webapp that gives realtime NUS shuttle bus information!</small>
+            </div>
+            <div class="col learncard">
+              <img
+                src="images/tembusu.jpeg"
+                class="avatar mx-auto mb-2 d-block shadow-sm">
+              <a href="https://tembulaundry.firebaseapp.com/" class="josefont h5">tLaundry</a>
+              <br>
+              <small>A webapp that gives the status of washing machines in Tembusu College's laundry rooms!</small>
+            </div>
+            <div class="col learncard">
+              <img
+                src="images/wripple.png"
+                class="avatar mx-auto mb-2 d-block shadow-sm">
+              <a href="http://wripple.herokuapp.com/" class="josefont h5">wripple</a>
+              <br>
+              <small>An online collaboration platform to connect students with different skillsets!</small>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="play" class="container py-4">
+      <h3 class="josefont">Play</h3>
+      <div class="grid">
+        <div class="row">
+          <div class="col-6 d-flex align-items-center">
+            <img src="images/4.jpg" class="imgvert">
+          </div>
+          <div class="col-6">
+            <img src="images/1.jpg" class="imghori">
+            <img src="images/2.jpg" class="imghori">
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-6">
+            <img src="images/3.jpg" class="imghori">
+            <img src="images/5.jpg" class="imghori">
+          </div>
+          <div class="col-6 d-flex align-items-center">
+            <img src="images/6.jpg" class="imgvert">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="contact" class="py-4">
+      <div class="container">
+        <div class="grid">
+          <div class="row">
+            <div class="col d-flex align-items-center">
+              <h3 class="josefont">Contact Me</h3>
+            </div>
+            <div class="col d-flex justify-content-end">
+              <a href="https://sg.linkedin.com/in/kev-inc">
+                <img class="avatar p-2 mr-4 shadow-sm" style="width: 64px !important; height: 64px !important;"
+                  src="images/linkedin.png">
+              </a>
+              <a href="https://github.com/kev-inc">
+                <img class="avatar p-2 shadow-sm" style="width: 64px !important; height: 64px !important;"
+                  src="images/github.png">
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
 </html>
