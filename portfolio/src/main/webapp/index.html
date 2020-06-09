@@ -10,7 +10,7 @@
   <script src="script.js"></script>
 </head>
 
-<body>
+<body onload="getAboutMeContent()">
   <div id="content">
     <div class="banner container">
       <div class="row">
@@ -101,20 +101,7 @@
     <div id="aboutme" class="py-4">
       <div class="container">
         <h3 class="josefont">About me</h3>
-        <p>Hi! My name is Kevin Chan and I am a 3rd year Computer Science student at the National University of
-          Singapore!
-          Specialising in Software Engineering, I enjoy developing mobile applications and websites as each app or
-          website
-          is like a blank canvas for me to exercise my creativity and problem-solving skills when developing them.
-          <br><br>
-          During my free time, I enjoy cooking and baking, a skill which I picked up during my exchange programme in
-          London in 2019. Some of my most delicious recipes are brownies, cookies and a bowl of beef gyudon!
-          <br><br>
-          I also enjoy playing the guitar and the piano, and the songs that I enjoy playing are usually classic pieces
-          on
-          the guitar like ‘Wonderful Tonight’ by Eric Clapton and classical pieces on the piano like the ‘Pathetique
-          Sonata’ by Beethoven.
-        </p>
+        <p id="aboutme_content"></p>
       </div>
     </div>
 
