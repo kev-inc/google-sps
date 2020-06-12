@@ -24,9 +24,22 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet("/data")
 public class DataServlet extends HttpServlet {
 
+  private String aboutme;
+  @Override
+  public void init() {
+      aboutme = "Hi! My name is Kevin Chan and I am a 3rd year Computer Science student at the National University of Singapore! " +
+          "Specialising in Software Engineering, " + 
+          "I enjoy developing mobile applications and websites as each app or website is like a blank canvas for me to exercise my creativity and problem-solving skills when developing them.\n\n" + 
+          "During my free time, I enjoy cooking and baking, a skill which I picked up during my exchange programme in London in 2019. " + 
+          "Some of my most delicious recipes are brownies, cookies and a bowl of beef gyudon!\n\n" +
+          "I also enjoy playing the guitar and the piano, and the songs that I enjoy playing are usually classic pieces " +
+          "on the guitar like 'Wonderful Tonight' by Eric Clapton and classical pieces on the piano like the 'Pathetique " +
+          "Sonata' by Beethoven.";
+  }
+
   @Override
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
     response.setContentType("text/html;");
-    response.getWriter().println("<h1>Hello Kevin!</h1>");
+    response.getWriter().println(aboutme);
   }
 }
