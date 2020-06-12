@@ -206,7 +206,16 @@
     <div id="guestbook" class="py-4">
       <div class="container">
         <h3 class="josefont">Visitor Book</h3>
+        <h5 class="josefont">Leave a comment below or simply say hi!</h5>
         <div id="comments"></div>
+        <form action="/data" method="POST">
+          <div class="input-group">
+            <input type="text" class="form-control" placeholder="Leave a comment" name="new-comment">
+            <div class="input-group-append">
+              <button class="btn btn-outline-secondary" type="submit">Send</button>
+            </div>
+          </div>
+        </form>
       </div>
     </div>
 
