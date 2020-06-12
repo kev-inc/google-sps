@@ -27,6 +27,7 @@ import javax.servlet.http.HttpServletResponse;
 public class DataServlet extends HttpServlet {
 
   private String aboutme;
+
   private ArrayList<String> comments;
 
   @Override
@@ -43,7 +44,6 @@ public class DataServlet extends HttpServlet {
     comments.add("Hello world!");
     comments.add("Hello from Singapore!");
     comments.add("Hello from London!");
-      
   }
 
   @Override
