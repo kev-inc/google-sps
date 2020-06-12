@@ -15,6 +15,7 @@ function getComments() {
     fetch('/data').then(response => response.json()).then((comments) => {
         const commentsDiv = document.getElementById("comments")
         comments.forEach(x => {
+            console.log(x)
             commentsDiv.appendChild(
                 createComment(x)
             )
