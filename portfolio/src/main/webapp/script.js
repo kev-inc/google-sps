@@ -11,8 +11,22 @@ function loopGreeting() {
     slides[current].style.opacity = 1
 }
 
-function getAboutMeContent() {
-    fetch('/data').then(response => response.text()).then((content) => {
-        document.getElementById('aboutme_content').innerText = content
+function getComments() {
+    fetch('/data').then(response => response.json()).then((comments) => {
+        const commentsDiv = document.getElementById("comments")
+        comments.forEach(x => {
+            commentsDiv.appendChild(
+                createComment(x)
+            )
+        })
     })
 }
+
+function createComment(comment) {
+    const p = document.createElement("p")
+    const el = document.createElement("i")
+    el.innerText = "\"" + comment + "\""
+    p.appendChild(el)
+    return p
+} 
+

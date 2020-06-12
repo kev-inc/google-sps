@@ -10,7 +10,7 @@
   <script src="script.js"></script>
 </head>
 
-<body onload="getAboutMeContent()">
+<body onload="getComments()">
   <div id="content">
     <div class="banner container">
       <div class="row">
@@ -101,7 +101,19 @@
     <div id="aboutme" class="py-4">
       <div class="container">
         <h3 class="josefont">About me</h3>
-        <p id="aboutme_content"></p>
+        <p id="aboutme_content">
+          Hi! My name is Kevin Chan and I am a 3rd year Computer Science student at the National University of
+          Singapore! Specialising in Software Engineering, I enjoy developing mobile applications and websites as each
+          app or website is like a blank canvas for me to exercise my creativity and problem-solving skills when
+          developing them.
+          <br><br>
+          During my free time, I enjoy cooking and baking, a skill which I picked up during my exchange programme in
+          London in 2019. Some of my most delicious recipes are brownies, cookies and a bowl of beef gyudon!
+          <br><br>
+          I also enjoy playing the guitar and the piano, and the songs that I enjoy playing are usually classic pieces
+          on the guitar like ‘Wonderful Tonight’ by Eric Clapton and classical pieces on the piano like the ‘Pathetique
+          Sonata’ by Beethoven.
+        </p>
       </div>
     </div>
 
@@ -138,32 +150,26 @@
         <div class="grid">
           <div class="row text-center">
             <div class="col learncard">
-              <img src="images/digiceipt.png"
-                class="avatar mx-auto mb-2 d-block shadow-sm">
+              <img src="images/digiceipt.png" class="avatar mx-auto mb-2 d-block shadow-sm">
               <a href="https://play.google.com/store/apps/details?id=com.kevinc.digiceipt_android&hl=en"
                 class="josefont h5">Digiceipt</a>
               <br>
               <small>A smart receipt application to store and record receipts!</small>
             </div>
             <div class="col learncard">
-              <img src="images/buses.png"
-                class="avatar mx-auto mb-2 d-block shadow-sm">
+              <img src="images/buses.png" class="avatar mx-auto mb-2 d-block shadow-sm">
               <a href="https://nusbusesweb.firebaseapp.com/" class="josefont h5">NUS Buses PWA</a>
               <br>
               <small>A webapp that gives realtime NUS shuttle bus information!</small>
             </div>
             <div class="col learncard">
-              <img
-                src="images/tembusu.jpeg"
-                class="avatar mx-auto mb-2 d-block shadow-sm">
+              <img src="images/tembusu.jpeg" class="avatar mx-auto mb-2 d-block shadow-sm">
               <a href="https://tembulaundry.firebaseapp.com/" class="josefont h5">tLaundry</a>
               <br>
               <small>A webapp that gives the status of washing machines in Tembusu College's laundry rooms!</small>
             </div>
             <div class="col learncard">
-              <img
-                src="images/wripple.png"
-                class="avatar mx-auto mb-2 d-block shadow-sm">
+              <img src="images/wripple.png" class="avatar mx-auto mb-2 d-block shadow-sm">
               <a href="http://wripple.herokuapp.com/" class="josefont h5">wripple</a>
               <br>
               <small>An online collaboration platform to connect students with different skillsets!</small>
@@ -197,23 +203,28 @@
       </div>
     </div>
 
-    <div id="contact" class="py-4">
+    <div id="guestbook" class="py-4">
       <div class="container">
-        <div class="grid">
-          <div class="row">
-            <div class="col d-flex align-items-center">
-              <h3 class="josefont">Contact Me</h3>
-            </div>
-            <div class="col d-flex justify-content-end">
-              <a href="https://sg.linkedin.com/in/kev-inc">
-                <img class="avatar p-2 mr-4 shadow-sm" style="width: 64px !important; height: 64px !important;"
-                  src="images/linkedin.png">
-              </a>
-              <a href="https://github.com/kev-inc">
-                <img class="avatar p-2 shadow-sm" style="width: 64px !important; height: 64px !important;"
-                  src="images/github.png">
-              </a>
-            </div>
+        <h3 class="josefont">Visitor Book</h3>
+        <div id="comments"></div>
+      </div>
+    </div>
+
+    <div id="contact" class="container py-4">
+      <div class="grid">
+        <div class="row">
+          <div class="col d-flex align-items-center">
+            <h3 class="josefont">Contact Me</h3>
+          </div>
+          <div class="col d-flex justify-content-end">
+            <a href="https://sg.linkedin.com/in/kev-inc">
+              <img class="avatar p-2 mr-4 shadow-sm" style="width: 64px !important; height: 64px !important;"
+                src="images/linkedin.png">
+            </a>
+            <a href="https://github.com/kev-inc">
+              <img class="avatar p-2 shadow-sm" style="width: 64px !important; height: 64px !important;"
+                src="images/github.png">
+            </a>
           </div>
         </div>
       </div>
