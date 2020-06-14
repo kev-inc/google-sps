@@ -32,14 +32,15 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet("/data")
 public class DataServlet extends HttpServlet {
 
+  DatastoreService datastore;
+
   @Override
   public void init() {
-
+    datastore = DatastoreServiceFactory.getDatastoreService();
   }
 
   @Override
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
-    DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
     Query query = new Query("comment").addSort("timestamp", SortDirection.DESCENDING);
     PreparedQuery results = datastore.prepare(query);
     ArrayList<String> comments = new ArrayList<String>();
@@ -60,8 +61,6 @@ public class DataServlet extends HttpServlet {
     Entity commentEntity = new Entity("comment");
     commentEntity.setProperty("message", newComment);
     commentEntity.setProperty("timestamp", timestamp);
-            DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
-
     datastore.put(commentEntity);
 
     response.sendRedirect("/");
