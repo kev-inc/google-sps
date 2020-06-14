@@ -17,6 +17,12 @@ package com.google.sps.servlets;
 import java.util.ArrayList; 
 import com.google.gson.Gson;
 import java.io.IOException;
+import com.google.appengine.api.datastore.DatastoreService;
+import com.google.appengine.api.datastore.DatastoreServiceFactory;
+import com.google.appengine.api.datastore.Entity;
+import com.google.appengine.api.datastore.PreparedQuery;
+import com.google.appengine.api.datastore.Query;
+import com.google.appengine.api.datastore.Query.SortDirection;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -26,18 +32,22 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet("/data")
 public class DataServlet extends HttpServlet {
 
-  private ArrayList<String> comments;
+  DatastoreService datastore;
 
   @Override
   public void init() {
-    comments = new ArrayList<String>();
-    comments.add("Hello world!");
-    comments.add("Hello from Singapore!");
-    comments.add("Hello from London!");
+    datastore = DatastoreServiceFactory.getDatastoreService();
   }
 
   @Override
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    Query query = new Query("comment").addSort("timestamp", SortDirection.DESCENDING);
+    PreparedQuery results = datastore.prepare(query);
+    ArrayList<String> comments = new ArrayList<String>();
+    for(Entity entity: results.asIterable()) {
+        String comment = (String) entity.getProperty("message");
+        comments.add(comment);
+    }
     String json = toJson(comments);
     response.setContentType("application/json;");
     response.getWriter().println(json);
@@ -46,7 +56,13 @@ public class DataServlet extends HttpServlet {
   @Override
   public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
     String newComment = request.getParameter("new-comment");
-    comments.add(newComment);
+    long timestamp = System.currentTimeMillis();
+
+    Entity commentEntity = new Entity("comment");
+    commentEntity.setProperty("message", newComment);
+    commentEntity.setProperty("timestamp", timestamp);
+    datastore.put(commentEntity);
+
     response.sendRedirect("/");
   }
 
