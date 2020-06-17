@@ -23,6 +23,9 @@ import com.google.appengine.api.datastore.Entity;
 import com.google.appengine.api.datastore.PreparedQuery;
 import com.google.appengine.api.datastore.Query;
 import com.google.appengine.api.datastore.Query.SortDirection;
+import com.google.cloud.language.v1.Document;
+import com.google.cloud.language.v1.LanguageServiceClient;
+import com.google.cloud.language.v1.Sentiment;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -43,10 +46,12 @@ public class DataServlet extends HttpServlet {
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
     Query query = new Query("comment").addSort("timestamp", SortDirection.DESCENDING);
     PreparedQuery results = datastore.prepare(query);
-    ArrayList<String> comments = new ArrayList<String>();
+    ArrayList<Comment> comments = new ArrayList<Comment>();
     for(Entity entity: results.asIterable()) {
         String comment = (String) entity.getProperty("message");
-        comments.add(comment);
+        Double score = (Double) entity.getProperty("sentiment");
+        Comment com = new Comment(comment, score);
+        comments.add(com);
     }
     String json = toJson(comments);
     response.setContentType("application/json;");
@@ -58,17 +63,34 @@ public class DataServlet extends HttpServlet {
     String newComment = request.getParameter("new-comment");
     long timestamp = System.currentTimeMillis();
 
+    Document doc =
+        Document.newBuilder().setContent(newComment).setType(Document.Type.PLAIN_TEXT).build();
+    LanguageServiceClient languageService = LanguageServiceClient.create();
+    Sentiment sentiment = languageService.analyzeSentiment(doc).getDocumentSentiment();
+    float score = sentiment.getScore();
+    languageService.close();
+
     Entity commentEntity = new Entity("comment");
     commentEntity.setProperty("message", newComment);
     commentEntity.setProperty("timestamp", timestamp);
+    commentEntity.setProperty("sentiment", score);
     datastore.put(commentEntity);
 
     response.sendRedirect("/");
   }
 
-  private String toJson(ArrayList<String> list) {
+  private String toJson(ArrayList<Comment> list) {
       Gson gson = new Gson();
       String json = gson.toJson(list);
       return json;
   }
+}
+
+class Comment {
+    String comment;
+    Double score;
+    public Comment(String comment, Double score) {
+        this.comment = comment;
+        this.score = score;
+    }
 }

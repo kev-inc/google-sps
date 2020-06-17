@@ -1,9 +1,9 @@
+var slides = document.getElementsByClassName("banner-left")
+var current = 0
+
 setInterval(loopGreeting,2000)
 
-function loopGreeting() {
-    var slides = document.getElementsByClassName("banner-left")
-    var current = 0
-
+function loopGreeting() { 
     for(var i = 0; i < slides.length; i++) {
         slides[i].style.opacity = 0
     }
@@ -25,9 +25,22 @@ function getComments() {
 
 function createComment(comment) {
     const p = document.createElement("p")
-    const el = document.createElement("i")
-    el.innerText = "\"" + comment + "\""
-    p.appendChild(el)
+    const cmt = document.createElement("i")
+    cmt.innerText = "\"" + comment.comment + "\""
+    p.appendChild(cmt)
+
+    const emoji = document.createElement("span")
+    emoji.innerText = " - "
+    if(comment.score > 0.5) {
+        emoji.innerText += "😁😁😁"
+    } else if(comment.score > 0) {
+        emoji.innerText += "🙂🙂🙂"
+    } else if(comment.score > -0.5) {
+        emoji.innerText += "😕😕😕"
+    } else {
+        emoji.innerText += "😒😒😒"
+    }
+    p.appendChild(emoji)
     return p
 } 
 
