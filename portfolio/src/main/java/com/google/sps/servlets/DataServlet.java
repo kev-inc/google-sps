@@ -85,12 +85,3 @@ public class DataServlet extends HttpServlet {
       return json;
   }
 }
-
-class Comment {
-    String comment;
-    Double score;
-    public Comment(String comment, Double score) {
-        this.comment = comment;
-        this.score = score;
-    }
-}

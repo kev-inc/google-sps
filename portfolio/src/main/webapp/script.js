@@ -15,7 +15,6 @@ function getComments() {
     fetch('/data').then(response => response.json()).then((comments) => {
         const commentsDiv = document.getElementById("comments")
         comments.forEach(x => {
-            console.log(x)
             commentsDiv.appendChild(
                 createComment(x)
             )
@@ -26,7 +25,7 @@ function getComments() {
 function createComment(comment) {
     const p = document.createElement("p")
     const cmt = document.createElement("i")
-    cmt.innerText = "\"" + comment.comment + "\""
+    cmt.innerText = "\"" + comment.message + "\""
     p.appendChild(cmt)
 
     const emoji = document.createElement("span")
