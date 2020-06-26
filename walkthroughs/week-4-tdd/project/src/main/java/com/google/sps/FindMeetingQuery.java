@@ -14,8 +14,9 @@
 
 package com.google.sps;
 
-import java.util.Collection;
+import java.util.Arrays;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Set;
 
 
@@ -25,7 +26,8 @@ public final class FindMeetingQuery {
     long meetingDuration = request.getDuration();
     int dayStart = TimeRange.WHOLE_DAY.start();
     int dayEnd = TimeRange.WHOLE_DAY.end();
-    boolean[] unavailableMinutes = new boolean[dayEnd - dayStart];
+    boolean[] availableMinutes = new boolean[dayEnd - dayStart];
+    Arrays.fill(availableMinutes, Boolean.TRUE);
     Collection<TimeRange> possibleTimings = new ArrayList<TimeRange>();
 
     // Check if meeting request duration is longer than a day. If it is, return empty list
@@ -38,7 +40,7 @@ public final class FindMeetingQuery {
       Set<String> eventAttendees = event.getAttendees();
       boolean toInclude = false;
       // Check if attendees of the meeting is involved in this event. 
-      // If it is, block out the minutes in the unavailableMinutes array.
+      // If it is, block out the minutes in the availableMinutes array.
       // Otherwise, ignore
       for(String attendee : meetingAttendees) {
         if(eventAttendees.contains(attendee)) {
@@ -50,17 +52,17 @@ public final class FindMeetingQuery {
         int eventStart = eventTimeRange.start();
         int eventEnd = eventTimeRange.end();
         for(int i = eventStart; i < eventEnd; i++) {
-          unavailableMinutes[i] = true;
+          availableMinutes[i] = false;
         }
       }
     }
-    // Iterate through unavailableMinutes array to find available timings.
+    // Iterate through availableMinutes array to find available timings.
     // Check if the duration of the available timings are longer than the meeting request.
     int startTime = 0;
-    while(startTime < unavailableMinutes.length) {
-      if (!unavailableMinutes[startTime]) {
+    while(startTime < availableMinutes.length) {
+      if (availableMinutes[startTime]) {
         int duration = 0;
-        while(startTime + duration < unavailableMinutes.length && !unavailableMinutes[startTime + duration]) {
+        while(startTime + duration < availableMinutes.length && availableMinutes[startTime + duration]) {
           duration ++;
         }
         if(duration >= meetingDuration) {
